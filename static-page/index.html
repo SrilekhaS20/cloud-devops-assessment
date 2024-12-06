@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Cost Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+        header {
+            background-color: #a72850;
+            color: white;
+            padding: 10px 0;
+        }
+        .calculator {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: rgb(255, 255, 255);
+            padding: 120px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        select, input {
+            padding: 10px;
+            margin: 10px;
+            width: 100%;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #a72850;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #a72850;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cloud Cost Calculator</h1>
+    </header>
+
+    <div class="calculator">
+        <h2>Estimate Cloud Costs</h2>
+        <form id="costForm">
+            <label for="cloudService">Select Cloud Service:</label>
+            <select id="cloudService">
+                <option value="ec2">EC2 Instance (AWS)</option>
+                <option value="k8s">EKS Cluster (AWS)</option>
+                <option value="storage">S3 (AWS)</option>
+            </select>
+
+            <label for="region">Select Region:</label>
+            <select id="region">
+                <option value="us-east-1">US East (N. Virginia)</option>
+                <option value="us-west-1">US West (N. California)</option>
+                <option value="europe-west1">Europe (Belgium)</option>
+                <option value="asia-east1">Asia East (Taiwan)</option>
+                <option value="us-central1">US Central (Iowa)</option>
+                <option value="us-west-2">US West (Oregon)</option>
+                <option value="australia-southeast1">Australia (Sydney)</option>
+                <option value="ap-south-1">India (Mumbai)</option>
+            </select>
+
+            <button type="button" onclick="calculateCost()">Calculate</button>
+        </form>
+
+        <h3 id="costResult"></h3>
+    </div>
+
+    <footer>
+        <p>Created by [Srilekha Senthilkumar] | 
+            <a href="https://github.com/SrilekhaS20" style="color: white;" target="_blank">GitHub</a> | 
+            <a href="https://www.linkedin.com/in/srilekha-senthilkumar/" style="color: white;" target="_blank">LinkedIn</a> | 
+            <a href="https://srilekhas20.github.io/" style="color: white;" target="_blank">Portfolio</a>
+        </p>
+        
+    </footer>
+
+    <script>
+        function calculateCost() {
+            const cloudService = document.getElementById("cloudService").value;
+            const region = document.getElementById("region").value;
+
+            let cost = 0;
+
+            if (cloudService === "ec2") {
+                if (region === "us-east-1") cost = 0.09;
+                else if (region === "us-west-1") cost = 0.10;
+                else if (region === "europe-west1") cost = 0.12;
+                else if (region === "asia-east1") cost = 0.11;
+                else if (region === "us-central1") cost = 0.09;
+                else if (region === "us-west-2") cost = 0.10;
+                else if (region === "australia-southeast1") cost = 0.15;
+                else if (region === "ap-south-1") cost = 0.09;
+            } else if (cloudService === "k8s") {
+                if (region === "us-east-1") cost = 0.15;
+                else if (region === "us-west-1") cost = 0.16;
+                else if (region === "europe-west1") cost = 0.18;
+                else if (region === "asia-east1") cost = 0.17;
+                else if (region === "us-central1") cost = 0.15;
+                else if (region === "us-west-2") cost = 0.16;
+                else if (region === "australia-southeast1") cost = 0.20;
+                else if (region === "ap-south-1") cost = 0.18;
+            } else if (cloudService === "storage") {
+                if (region === "us-east-1") cost = 0.023;
+                else if (region === "us-west-1") cost = 0.022;
+                else if (region === "europe-west1") cost = 0.025;
+                else if (region === "asia-east1") cost = 0.024;
+                else if (region === "us-central1") cost = 0.023;
+                else if (region === "us-west-2") cost = 0.022;
+                else if (region === "australia-southeast1") cost = 0.026;
+                else if (region === "ap-south-1") cost = 0.024;
+            }
+
+            document.getElementById("costResult").innerText = `Estimated Cost: $${cost.toFixed(2)} per hour`;
+        }
+    </script>
+</body>
+</html>

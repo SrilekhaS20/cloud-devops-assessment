@@ -28,7 +28,7 @@ You should also have an **AWS account** and appropriate IAM roles for creating E
 
 ### 1. Clone the Repository
 
-git clone https://github.com/your-repo/cloud-devops-assessment.git
+git clone https://github.com/SrilekhaS20/cloud-devops-assessment.git
 cd cloud-devops-assessment
 
 ### 2. Create Dockerfile

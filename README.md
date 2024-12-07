@@ -107,5 +107,5 @@ Access grafana by applying below yaml files
 kubectl apply -f k8s/grafana/grafana-deployment.yaml
 ```
 ```bash
-kubectl apply -f k8s/k8s/grafana/grafana-service.yaml
+kubectl apply -f k8s/grafana/grafana-service.yaml
 ```

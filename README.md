@@ -27,12 +27,15 @@ You should also have an **AWS account** and appropriate IAM roles for creating E
 ## Infrastructure Setup
 
 ### 1. Clone the Repository
-
+```bash
 git clone https://github.com/SrilekhaS20/cloud-devops-assessment.git
+```
+```bash
 cd cloud-devops-assessment
+```
 
 ### 2. Create Dockerfile
-
+```bash
 FROM nginx:alpine
 
 COPY ./static-page /usr/share/nginx/html
@@ -40,27 +43,46 @@ COPY ./static-page /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-
+```
+```bash
 docker build -t cloud-devops-assessment:latest .
+```
+```bash
 docker run -d -p 80:80 cloud-devops-assessment:latest
+```
+```bash
 docker tag cloud-devops-assessment:latest docker_username/cloud-devops-assessment:latest
+```
+```bash
 docker push docker_username/cloud-devops-assessment:latest
+```
 
 ### 3. Create Terraform files
 Create necessary terraform files to provision eks cluster in aws
 After creating terraform files, Execute below commands to create resources in aws
+```bash
 terraform init
+```
+```bash
 terraform plan
+```
+```bash
 terraform apply
+```
 
 ### 4. Create Kubernetes deployment files
 Create deployment and services yaml files to provision node, namespaces, pods, deployments and services in aws
 
 ### 5. Connecting EKS cluster through EC2
-
+```bash
 aws configure
+```
+```bash
 kubectl apply -f k8s/deployment.yaml
+```
+```bash
 kubectl apply -f k8s/service.yaml
+```
 
 ### 5. Create Prometheus service
 Create Prometheus deployment and services yaml files

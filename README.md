@@ -35,6 +35,7 @@ cd cloud-devops-assessment
 ```
 
 ### 2. Create Dockerfile
+Dockerfile
 ```bash
 FROM nginx:alpine
 
@@ -44,15 +45,19 @@ EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 ```
+Build docker image
 ```bash
 docker build -t cloud-devops-assessment:latest .
 ```
+Start and run docker image as container
 ```bash
 docker run -d -p 80:80 cloud-devops-assessment:latest
 ```
+Tag docker image
 ```bash
 docker tag cloud-devops-assessment:latest docker_username/cloud-devops-assessment:latest
 ```
+Push the image to dockerhub
 ```bash
 docker push docker_username/cloud-devops-assessment:latest
 ```
@@ -84,14 +89,23 @@ kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 ```
 
-### 5. Create Prometheus service
+### 5. Create Prometheus to monitor EKS cluster
 Create Prometheus deployment and services yaml files
-
+```bash
 kubectl apply -f k8s/prometheus/prometheus-deployment.yaml
+```
+```bash
 kubectl apply -f k8s/prometheus/prometheus-service.yaml
+```
+```bash
 kubectl apply -f k8s/prometheus/prometheus-configmap.yaml
+```
 
-
-
-
-
+### 5. Create Grafana to visualize the metrics in dashboard
+Access grafana by applying below yaml files
+```bash
+kubectl apply -f k8s/grafana/grafana-deployment.yaml
+```
+```bash
+kubectl apply -f k8s/k8s/grafana/grafana-service.yaml
+```

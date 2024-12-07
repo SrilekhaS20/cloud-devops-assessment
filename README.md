@@ -77,8 +77,10 @@ terraform apply
 
 ### 4. Create Kubernetes deployment files
 Create deployment and services yaml files to provision node, namespaces, pods, deployments and services in aws
+Deployment and Service yaml files can be found in k8s folder
 
 ### 5. Connecting EKS cluster through EC2
+After successful creation of EKS Cluster, execute below commands to create deployment and service.
 ```bash
 aws configure
 ```
@@ -101,7 +103,7 @@ kubectl apply -f k8s/prometheus/prometheus-service.yaml
 kubectl apply -f k8s/prometheus/prometheus-configmap.yaml
 ```
 
-### 5. Create Grafana to visualize the metrics in dashboard
+### 6. Create Grafana to visualize the metrics in dashboard
 Access grafana by applying below yaml files
 ```bash
 kubectl apply -f k8s/grafana/grafana-deployment.yaml
